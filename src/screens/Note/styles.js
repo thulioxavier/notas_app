@@ -2,10 +2,31 @@ import styled from 'styled-components';
 
 export const Conteiner = styled.View`
     background-color: #F0F0F5;
+    flex: 1;
 `;
 
 export const P = styled.Text`
     
+`;
+
+export const TitleInput = styled.TextInput`
+    font-size: 22px;
+    padding: 10px;
+    margin: 5px;
+    border-width: 1px;
+    border-color: #CCC;
+`;
+
+export const BodyText = styled.TextInput`
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    color: #050508;
+    margin: 5px;
+    border-width: 1px;
+    border-color: #CCC;
+
+
 `;
 
 export const SaveButton =  styled.TouchableHighlight`
@@ -32,3 +53,18 @@ export const ButtomMin =  styled.TouchableOpacity`
     border-radius: 50px;
     margin-left: 13px;
 `;
+
+export const NoteOptions = styled.TouchableOpacity`
+    padding: 10px;
+    margin: 5px;
+    border-width: 1px;
+    border-color: #CCC;
+    align-items: center;
+`
+
+export const TextButton = styled.Text`
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+`;
+

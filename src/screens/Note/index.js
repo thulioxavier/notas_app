@@ -5,13 +5,15 @@ import { useSelector } from 'react-redux';
 
 import {TouchableOpacity} from 'react-native';
 
-import { Save } from '../../constants/icons';
-import { Conteiner, P, SaveButton, SaveImg, Row, ContModal, ButtomMin } from './styles';
+import { Checked } from '../../constants/icons';
+import { Conteiner, P, SaveButton, SaveImg, Row, ContModal, ButtomMin, NoteOptions, TitleInput, BodyText, TextButton } from './styles';
 
 const actionSheetRef = createRef();
 
 const Note = () => {
-    let actionSheet;
+
+    const [title, setTitle] = React.useState('');
+    const [body, setBody] = React.useState('');
 
     const navigation = useNavigation();
 
@@ -19,7 +21,7 @@ const Note = () => {
         navigation.setOptions({
             headerRight: () => (
                 <SaveButton underlayColor="transparent">
-                    <SaveImg source={Save} />
+                    <SaveImg source={Checked} style={{tintColor: '#F0F0F5'}} />
                 </SaveButton>
             )
         });
@@ -27,17 +29,30 @@ const Note = () => {
 
     return (
         <Conteiner>
-           
-                <TouchableOpacity
+            <TitleInput
+                placeholder="Título da Nota"
+                onChangeText={e=> setTitle(e)}
+                value={title}
+                autoFocus={true}
+            />
+            <BodyText
+                placeholder="Corpo da Nota"
+                multiline={true}
+                textAlignVertical="top"
+                value={body}
+                onChangeText={e=> setBody(e)}
+            />
+                <NoteOptions
                     onPress={() => {
                         actionSheetRef.current?.setModalVisible();
                     }}
                 >
-                    <P>Open ActionSheet</P>
-                </TouchableOpacity>
+                    <TextButton >OPÇÕES DA NOTA</TextButton>
+                </NoteOptions>
 
                 <ActionSheet ref={actionSheetRef}>
                     <ContModal>
+                        <P>Cor de marcação:</P>
                         <Row horizontal={true} showsHorizontalScrollIndicator={false}>
                             <ButtomMin style={{backgroundColor: '#000', marginLeft: 0}}/>
                             <ButtomMin style={{backgroundColor: '#CE1929'}}/>
